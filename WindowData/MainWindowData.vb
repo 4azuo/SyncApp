@@ -20,8 +20,12 @@ Public Class MainWindowData
     Public Property NewItem As PlanObj = Nothing
     Public ReadOnly Property NotifyMsg As String
         Get
-            Dim lastSyncPlan As PlanObj = ListPlans.OrderByDescending(Function(x) x.LastSyncTime.ToString("yyyyMMddHHmmss.fff")).First()
-            Return $"Plans: {ListPlans.Count} - Last sync: {lastSyncPlan.PlanName} at {lastSyncPlan.LastSyncTime:HH\:mm\:ss}"
+            If ListPlans.Count = 0 Then
+                Return $"Plans: 0"
+            Else
+                Dim lastSyncPlan As PlanObj = ListPlans.OrderByDescending(Function(x) x.LastSyncTime.ToString("yyyyMMddHHmmss.fff")).First()
+                Return $"Plans: {ListPlans.Count} - Last sync: {lastSyncPlan.PlanName} at {lastSyncPlan.LastSyncTime:HH\:mm\:ss}"
+            End If
         End Get
     End Property
     Public ReadOnly Property IsNotNewMode As Boolean
