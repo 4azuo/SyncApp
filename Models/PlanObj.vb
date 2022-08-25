@@ -185,7 +185,7 @@ Public Class PlanObj
         SyncLock SyncObj
             If Not Directory.Exists(srcFolder) OrElse Not Directory.Exists(dstFolder) Then
                 _IsError = True
-                Watcher.Dispose()
+                Watcher?.Dispose()
                 _Watcher = Nothing
                 Return
             Else
