@@ -1,0 +1,34 @@
+﻿using System.Windows;
+
+public abstract class CWindowData : AutoNotifiableObject
+{
+    /// <summary>
+    /// Window Values
+    /// </summary>
+    public Window Window { get; private set; }
+
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    public void New() { 
+    }
+
+    /// <summary>
+    /// Set parent window
+    /// </summary>
+    /// <param name="iWindow"></param>
+    public void InitWindow(Window iWindow) { 
+        Window = iWindow;
+
+        //load
+        Pause();
+        OnLoad();
+        Unpause();
+    }
+
+    /// <summary>
+    /// Load data
+    /// </summary>
+    public void OnLoad() { 
+    }
+}
